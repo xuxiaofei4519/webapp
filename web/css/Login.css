@@ -1,0 +1,94 @@
+html{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: sans-serif;
+}
+body{
+        width: 100%;
+        height: 100%;
+        font-family: 'Open Sans',sans-serif;
+        margin: 0;
+        background-image: url("../img/background.png");
+        background-repeat:no-repeat ;
+        background-attachment: fixed;
+        background-position: center;
+
+}
+#login{
+          position: absolute;
+          top: 50%;
+          left:50%;
+          margin: -150px 0 0 -150px;
+          width: 600px;
+          height: 600px;
+}
+#login h1{
+          color: #fff;
+
+          letter-spacing: 1px;
+          padding-left: 80px;
+}
+h1{
+         font-size: 2em;
+         margin: 0.67em 0;
+}
+
+input{
+        width: 278px;
+        height: 18px;
+        margin-bottom: 10px;
+        outline: none;
+        padding: 10px;
+        font-size: 13px;
+        color: #fff;
+        border-top: 3px solid #8A8A8A;
+        border-left: 3px solid #8A8A8A;
+        border-right: 3px solid #8A8A8A;
+        border-bottom: 3px solid #8A8A8A;
+        border-radius: 4px;
+        background-color: #666666;
+}
+.but{
+          width: 300px;
+          min-height: 20px;
+          display: block;
+          background-color: #4a77d4;
+          border: 1px solid #3762bc;
+          color: #fff;
+          padding: 9px 14px;
+          font-size: 15px;
+          line-height: normal;
+          border-radius: 5px;
+          margin: 0;
+}
+a{
+    color: #FFFFFF;
+    font-size: 15px;
+    text-decoration:none;
+    text-shadow: 1px 1px 1px #FFFFFF;
+    background-color: inherit;
+
+}
+#count_msg,#password_msg{
+    color: #FF3030;
+    font-size: 13px;
+}
+#register{
+    margin-left: 150px;
+}
+input::-webkit-input-placeholder{
+    color: #C7C7C7;
+}
+input:-moz-placeholder{
+    color: #C7C7C7;
+}
+input::-moz-placeholder{
+    color: #C7C7C7;
+}
+input:-ms-input-placeholder{
+    color: #C7C7C7;
+}
+#u_birth{
+
+}

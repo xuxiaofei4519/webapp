@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - mydatabasic@localhost" uuid="9708a408-056a-4982-bf54-ec0077d8042b">
+    <database-info product="MySQL" version="5.7.15-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="mydatabasic">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="information_schema"/>
+      <schema id="3" name="mysql"/>
+      <schema id="4" name="performance_schema"/>
+      <table id="5" parent="1" name="u_user"/>
+      <table id="6" parent="1" name="usalt"/>
+      <column id="7" parent="5" name="u_id">
+        <mandatory>1</mandatory>
+        <data-type>char(50)|0</data-type>
+      </column>
+      <column id="8" parent="5" name="u_name">
+        <data-type>char(40)|0</data-type>
+      </column>
+      <column id="9" parent="5" name="u_password">
+        <data-type>char(40)|0</data-type>
+      </column>
+      <column id="10" parent="5" name="u_create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="11" parent="5" name="u_email">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="12" parent="5" name="u_birth">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <key id="13" parent="5" name="PRIMARY">
+        <columns>u_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="14" parent="6" name="u_salt">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="15" parent="6" name="u_id">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <index id="16" parent="6" name="usalt_u_user_u_id_fk">
+        <columns>u_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="17" parent="6" name="usalt_u_user_u_id_fk">
+        <columns>u_id</columns>
+        <ref-key>~.u_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>

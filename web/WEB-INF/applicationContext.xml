@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.myapp"/>
+    <!--开启mvc扫描组建-->
+    <mvc:annotation-driven/>
+    <bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="username" value="root"></property>
+        <property name="password" value="451988"></property>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/mydatabasic?usrUnicode=true&amp;characterEncoding=utf8"></property>
+    </bean>
+    <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dbcp"></property>
+        <property name="mapperLocations" value="classpath:com/myapp/sql/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.myapp.dao"></property>
+        <!--自动注入sqlsessionfactory-->
+    </bean>
+
+
+    <!--配置事物管理组件-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dbcp"></property>
+    </bean>
+
+    <!--开启事物注解标记-->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!--开启AOP注解支持-->
+    <aop:aspectj-autoproxy/>
+
+</beans>

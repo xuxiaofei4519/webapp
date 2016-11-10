@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/web" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/web/WEB-INF/classes" />
+    <output-test url="file://$MODULE_DIR$/web/WEB-INF/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="AOP_aspect" level="application" />
+    <orderEntry type="library" exported="" name="commons-codec-1.9" level="application" />
+    <orderEntry type="library" exported="" name="commons-dbcp-1.4" level="application" />
+    <orderEntry type="library" exported="" name="dom4j-1.6.1" level="application" />
+    <orderEntry type="library" exported="" name="jquery-3.0" level="application" />
+    <orderEntry type="library" exported="" name="JSON_jar" level="application" />
+    <orderEntry type="library" exported="" name="jstl" level="application" />
+    <orderEntry type="library" exported="" name="Junit4-4" level="application" />
+    <orderEntry type="library" exported="" name="mybatis-3.4.1" level="application" />
+    <orderEntry type="library" exported="" name="mybatis-generator-core-1.3.2" level="application" />
+    <orderEntry type="library" exported="" name="mybatis-spring-1.3.0" level="application" />
+    <orderEntry type="library" exported="" name="mysql-connector-java-5.1.7-bin" level="application" />
+    <orderEntry type="library" exported="" name="ref.idea.common-1.0" level="application" />
+    <orderEntry type="library" exported="" name="spring-orm-4.3.1.RELEASE" level="application" />
+    <orderEntry type="library" exported="" name="jackson 2" level="application" />
+    <orderEntry type="library" exported="" name="Spring-4.3" level="application" />
+    <orderEntry type="library" exported="" name="Spring Batch-2.2" level="application" />
+    <orderEntry type="library" exported="" name="Spring Data JPA-1.3" level="application" />
+    <orderEntry type="library" exported="" name="Spring Integration-4.0" level="application" />
+    <orderEntry type="library" exported="" name="Spring MVC-4.3" level="application" />
+    <orderEntry type="library" exported="" name="Spring Security-3.2" level="application" />
+    <orderEntry type="library" exported="" name="Spring Webflow-2.4" level="application" />
+    <orderEntry type="library" exported="" name="Spring-ws" level="application" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 7.0.72" level="application_server_libraries" />
+  </component>
+</module>

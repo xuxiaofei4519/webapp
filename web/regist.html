@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regist</title>
+    <link rel="stylesheet" type="text/css" href="css/Login.css"/>
+    <link rel="stylesheet" type="text/css" href="jquery-easyui/themes/black/easyui.css">
+    <link rel="stylesheet" type="text/css" href="jquery-easyui/themes/icon.css">
+    <script type="text/javascript" src="jquery-easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $("#u_username").validatebox({
+                required: true,
+                missingMessage:'必须输入用户名'
+            });
+            $("#u_email").validatebox({
+                required:true,
+                validType: 'email',
+                missingMessage:'必须输入邮箱',
+                invalidMessage:'请输入有效邮箱'
+            });
+            $("#u_password").validatebox({
+                required:true,
+                missingMessage:"必须输入密码"
+            });
+            $("#u_repassword").validatebox({
+                required:true,
+                missingMessage:"必须输入确认密码"
+            });
+            $("#u_birth").datebox({
+                formatter:function (date) {
+                    var y = date.getFullYear();
+                    var m = date.getMonth()+1;
+                    var d = date.getDate();
+                    return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+                },
+                parser:function (s) {
+                    if (!s) return new Date();
+                    var ss = (s.split('-'));
+                    var y = parseInt(ss[0],10);
+                    var m = parseInt(ss[1],10);
+                    var d = parseInt(ss[2],10);
+                    if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+                        return new Date(y,m-1,d);
+                    } else {
+                        return new Date();
+                    }
+                }
+            });
+
+
+
+            $.extend($.fn.validatebox.defaults.rules, {
+                equals: {
+                    validator: function(value,param){
+                        return value == $(param[0]).val();
+                    },
+                    message: '两次输入的密码不一致'
+                }
+            });
+            $(".but").click(function () {
+                var username = $("#u_username").val().trim();
+                var password = $("#u_password").val().trim();
+                var email = $("#u_email").val().trim();
+                var birth = $("#u_birth").datebox('getValue');
+                $.ajax({
+                    url:"/webapp/user/regist.do",
+                    type:"post",
+                    data:{"uname":username,"upassword":password,"ubirth":birth,"uemail":email},
+                    dataType:"json",
+                    success:function (result) {
+                        if (result.status == 0) {
+                            window.location.href="login.html";
+                        }
+                        if (result.status == 1) {
+                            $("#count_msg").html(result.msg);
+                        }
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+</head>
+<body>
+<div id="login">
+    <h1>用户注册</h1>
+    <input type="text" id="u_username" style="background-color: #666666;border: 3px solid #8A8A8A" placeholder="输入用户名"/><span
+        id="count_msg"></span>
+    <input type="password" id="u_password" class="easyui-validatebox"
+           style="background-color: #666666;border: 3px solid #8A8A8A" placeholder="输入密码"/><span
+        id="password_msg"></span>
+    <input type="password" id="u_repassword" class="easyui-validatebox"
+           required="required" validType="equals['#u_password']"
+           style="background-color: #666666;border: 3px solid #8A8A8A" placeholder="输入确认密码"/><span
+        id="repassword_msg"></span>
+    <input type="email" id="u_email" class="easyui-validatebox"
+           style="background-color: #666666;border: 3px solid #8A8A8A" placeholder="输入邮箱"/><span id="email_msg"></span>
+    <input type="text" id="u_birth" class="easyui-datebox" style="height: 40px;" placeholder="输入出生日期"/><span
+        id="birth_msg"></span>
+
+    <button class="but" type="submit">注册</button>
+    <p id="rgtandfgt"><a href="login.html">返回登录</a></p>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myapp.dao.user.UserDao">
+    <select id="findByUserName" parameterType="string" resultType="com.myapp.entity.User">
+        SELECT * FROM mydatabasic.u_user
+        WHERE u_name=#{userName}
+    </select>
+    <select id="getSalt" parameterType="string" resultType="string">
+        SELECT u_salt FROM mydatabasic.usalt WHERE u_id=#{uid}
+    </select>
+    <insert id="istSalt" parameterType="com.myapp.entity.USalt">
+        INSERT INTO mydatabasic.usalt (u_salt, u_id) VALUES (#{u_salt},#{u_id})
+    </insert>
+
+    <insert id="istUser" parameterType="com.myapp.entity.User">
+        INSERT INTO mydatabasic.u_user (u_id, u_name, u_password, u_birth, u_create_time,u_email)
+        VALUES (#{u_id},#{u_name},#{u_password},#{u_birth},#{u_create_time},#{u_email})
+    </insert>
+</mapper>

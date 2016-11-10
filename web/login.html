@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="css/Login.css"/>
+    <script type="text/javascript" src = "js/jquery-3.0.0.js"></script>
+    <script type="text/javascript" >
+        $(function () {
+            $(".but").click(function () {
+                $("span").empty()
+                var username = $("#u_username").val().trim();
+                var password = $("#u_password").val().trim();
+                $.ajax({
+                    url: "/webapp/user/login.do",
+                    type: "post",
+                    data:{"username":username,"password":password},
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 0) {
+                            window.location.href="main.html";
+                        } else if (result.status == 1) {
+                            $("#count_msg").html(result.msg);
+                        } else if (result.status == 2) {
+                            $("#password_msg").html(result.msg);
+                        }
+                    }
+
+                });
+            });
+            $("#u_username,#u_password").focus(function () {
+                $("span").empty();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="login">
+        <h1>用户登录</h1>
+        <input type="text" id="u_username" required oninvalid="setCustomValidity('请输入用户名！')"
+               oninput="setCustomValidity('')" placeholder="用户名"/><span id="count_msg"></span>
+        <input type="password" id="u_password" required oninvalid="setCustomValidity('请输入密码！')"
+               oninput="setCustomValidity('')" placeholder="密码"/><span id="password_msg"></span>
+        <p class="rgtandfgt"><a id="forgetpw" href="forgetpasswd">忘记密码？</a>&nbsp;&nbsp;&nbsp;<a
+                id="register" href="regist.html">注册</a></p>
+        <button class="but" type="submit">登录</button>
+    </div>
+</body>
+</html>
+
+
